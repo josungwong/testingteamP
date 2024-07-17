@@ -40,7 +40,39 @@ body{
     padding: 20px 1em;
     border-radius: 20px;
 }
-
+.more-inFor{
+    border: none;
+    float: left;
+    position: relative;
+    left: 90%;
+    top: -15%;
+    width: 20px;
+    height: 10px;
+    background-color: black;
+    border-radius: 20px;
+}
+#pop-box{
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+    width: 85vw;
+    height: 85vh;
+    border: 5px solid white;
+    border-radius: 20px;
+    background-color: rgb(67, 252, 252);
+}
+.Exit{
+    position: relative;
+    left: 95%;
+    top: 2%;
+    border: none;
+    background-color: rgb(0,0,0,0);
+    font-size: 44px;
+    font-weight: bold;
+}
 @media screen and (max-width:48rem) {
     .show-img-size{
         max-width: 60vw;

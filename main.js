@@ -1,11 +1,11 @@
-const url = new URL(
-    `https://stargolf.info/API_TEST/get_tasks.php?limit=101`
-  );
+  let wr_1Value = "공연"
   let dataList = [];
   let showList = []
-  let m = 0
+  let popUpScreen = document.getElementById("pop-box")
 
-
+  const url = new URL(
+    `https://stargolf.info/API_TEST/get_tasks.php?category=${wr_1Value}`
+  );
 
   const getData = async () => {
     // 데이터 받아서 랜더링하는 공통부분
@@ -34,16 +34,13 @@ const url = new URL(
 
 const showRender = () => {
     
-    showList = dataList.filter((e)=>{
-        return e.wr_1 == "공연"
-    })
-    
-    console.log("리스트",showList)
-
+    showList = dataList
     let showHTML = showList.map(show=>
         `<div class="col">
-            <div id="show-img">
+            <div>
+                <a id="show-img" href=${show.wr_10}>
                 <img class="show-img-size" src=${show.wr_link1} onerror="this.onerror=null; this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUnvISVTYopMAy17o3mB2lfSPeEjoKfAdV2w&s';">
+                </a>
             </div>
             <div class="show-exp">
                 <div id="show-title">
@@ -55,10 +52,12 @@ const showRender = () => {
                 <div id="show-address">
                     <p>address: ${showAddress(show)}</p>
                 </div>
+                <button class="more-inFor" onclick="popUp(); popText(${show})">
+                </button>
             </div>
         </div>`    
     ).join('')
-
+    
     document.getElementById("show-box").innerHTML = showHTML
 }
 
@@ -88,42 +87,17 @@ const showAddress = (show) =>{
     }
 }
 
-const contentOnoff = () =>{
-    console.log(m)
-    if(m == 1){
-        showRender()
-        m -=1
-    }else{
-        showList = dataList.filter((e)=>{
-            return e.wr_1 == "공연"
-        })
-        
-        console.log("리스트",showList)
-    
-        let showHTML = showList.map(show=>
-            `<div class="col">
-                <div id="show-img">
-                    <img class="show-img-size" src=${show.wr_link1} onerror="this.onerror=null; this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUnvISVTYopMAy17o3mB2lfSPeEjoKfAdV2w&s';">
-                </div>
-                <div class="show-exp">
-                    <div id="show-title">
-                        <h4>${show.wr_subject}</h4>
-                    </div>
-                    <div id="show-time">
-                        <p>${showTime(show)}</p>
-                    </div>
-                    <div id="show-address">
-                        <p>address: ${showAddress(show)}</p>
-                    </div>
-                    ${show.wr_content}
-                </div>
-            </div>`    
-        ).join('')
-    
-        document.getElementById("show-box").innerHTML = showHTML
-    
-        m += 1
-    }
+const popUp = () =>{
+    popUpScreen.style.display = "block"
 
-    
+}
+
+const exit = ()=>{
+    popUpScreen.style.display = "none"
+}
+
+const popText = (showPop) => {
+    showPop = ``
+    //각 내용을 상세히
+    document.getElementById("pop-inner").innerHTML = popupHTML
 }
