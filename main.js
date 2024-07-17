@@ -52,7 +52,7 @@ const showRender = () => {
                 <div id="show-address">
                     <p>address: ${showAddress(show)}</p>
                 </div>
-                <button class="more-inFor" onclick="popUp(); popText(${show})">
+                <button class="more-inFor" onclick="popUp(); popText()">
                 </button>
             </div>
         </div>`    
@@ -96,8 +96,8 @@ const exit = ()=>{
     popUpScreen.style.display = "none"
 }
 
-const popText = (showPop) => {
-    showPop = ``
+const popText = () => {
+    
     //각 내용을 상세히
-    document.getElementById("pop-inner").innerHTML = popupHTML
+    // document.getElementById("pop-inner").innerHTML = popupHTML
 }
