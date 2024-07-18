@@ -45,7 +45,7 @@ const showRender = () => {
           </div>
           <div class="show-exp" onclick="popUp(); popText()">
               <div id="show-title">
-                  <h4>${show.wr_subject}</h4>
+                  <h5>${show.wr_subject}</h5>
               </div>
               
              
