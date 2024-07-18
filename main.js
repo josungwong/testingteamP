@@ -2,6 +2,9 @@ let wr_1Value = "공연"
 let dataList = [];
 let showList = []
 let popUpScreen = document.getElementById("pop-box")
+let titleText = document.querySelectorAll(".show-exp")
+titleText.forEach((E)=>
+E.addEventListener("click",(event) => popText(event)))
 
 const url = new URL(
   `https://stargolf.info/API_TEST/get_tasks.php?category=${wr_1Value}`
@@ -43,9 +46,9 @@ const showRender = () => {
               <img class="show-img-size" src=${show.wr_link1} onerror="this.onerror=null; this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUnvISVTYopMAy17o3mB2lfSPeEjoKfAdV2w&s';">
               </a>
           </div>
-          <div class="show-exp" onclick="popUp(); popText()">
+          <div class="show-exp" onclick="popUp()">
               <div id="show-title">
-                  <h4>${show.wr_subject}</h4>
+                  <a href=${show.wr_10} class="none-a"><h4 class="none-a">${show.wr_subject}</h4></a>
               </div>
               
              
@@ -88,19 +91,24 @@ const showRender = () => {
 //   }
 // }
 
-const popUp = () =>{
-  popUpScreen.style.display = "block"
+// const popUp = () =>{
+//   popUpScreen.style.display = "block"
 
-}
+// }
 
-const exit = ()=>{
-  popUpScreen.style.display = "none"
-}
+// const exit = ()=>{
+//   popUpScreen.style.display = "none"
+// }
 
-const popText = (event) => {
-    console.log(event)
+// const popText = (event) => {
+//   console.log(event)
+//   for(let i = 0; i < showList.length;i++){
+//     console.log(titleText[i])
+
+//   }
+//   console.log("클릭")
   
   //각 내용을 상세히
   // document.getElementById("pop-inner").innerHTML = popupHTML
-}
+// }
 console.log("그림을 클릭하면 사이트로 들어가고 이름을 클릭하면 창을 띄어서 거기에서 자세히 설명해주고 싶은데 이걸 구연할 방법을 모집중입니다")
