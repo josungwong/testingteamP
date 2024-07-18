@@ -1,76 +1,106 @@
-*{
-    margin: 0;
-}
-body{
-    background-color: #afafaf;
-}
-.show-img-size{
-    max-width: 500px;
-    height: 200px;
-}
-#show-img{
-    display: flex;
-    justify-content: center;
-}
-#show-box{
-    margin: 10px 1em;
-    padding: 1em;
-    border-radius: 20px;
-    background-color: white;
-    border: 3px solid rgb(67, 252, 252);
-}
-.col{
-    background-color: white;
-    margin: 0.5em;
-    border-radius: 20px;
-    transition: 0.3s;
-    border: 2px solid rgba(0, 0, 0, 0);
-}
-.col:hover{
-    transition: 0.3s;
-    transform: scale(1.01);
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-}
-#show-img{
-    margin: 1em 0;
-}
-.show-exp{
-    background-color:  rgb(202, 248, 248);
-    margin: 0 1em;
-    padding: 20px 1em;
-    border-radius: 20px;
-}
-#pop-box{
-    display: none;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    z-index: 1;
-    width: 85vw;
-    height: 85vh;
-    border: 5px solid rgb(67, 252, 252);
-    border-radius: 20px;
-    background-color: rgb(0, 0, 0);
-}
-.Exit{
-    position: relative;
-    left: 95%;
-    top: 2%;
-    border: none;
-    background-color: rgb(0,0,0,0);
-    font-size: 44px;
-    font-weight: bold;
-    color: white;
-}
-@media screen and (max-width:48rem) {
-    .show-img-size{
-        width: 55vw;
-        height: 35vw;
+let wr_1Value = "공연"
+let dataList = [];
+let showList = []
+let popUpScreen = document.getElementById("pop-box")
+
+const url = new URL(
+  `https://stargolf.info/API_TEST/get_tasks.php?category=${wr_1Value}`
+);
+
+const getData = async () => {
+  // 데이터 받아서 랜더링하는 공통부분
+  try {
+    const response = await fetch(url);
+    console.log(response);
+    if (!response.ok) {
+      throw new Error('Failed to fetch');
     }
-    .Exit{
-        left: 85%;
-        top: 1%;
+    const data = await response.json(); // json은 파일 형식중 하나
+    if (response.status === 200) {
+      data.forEach;
+      dataList = data.data;
+      console.log('news', dataList);
+      showRender();
+    } else {
+      // throw new Error(data.message);
+      console.log('rrr', response.status);
+      throw new Error(data.message || 'Failed to fetch data');
     }
-    
+  } catch (error) {
+    console.error;
+  }
+};
+getData()
+
+const showRender = () => {
+  
+  showList = dataList
+  let showHTML = []
+  showHTML = showList.map(show=>
+      `<div class="col">
+          <div>
+              <a id="show-img" href=${show.wr_10}>
+              <img class="show-img-size" src=${show.wr_link1} onerror="this.onerror=null; this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUnvISVTYopMAy17o3mB2lfSPeEjoKfAdV2w&s';">
+              </a>
+          </div>
+          <div class="show-exp" onclick="popUp(); popText()">
+              <div id="show-title">
+                  <h4>${show.wr_subject}</h4>
+              </div>
+              
+             
+          </div>
+      </div>`    
+    ).join('')
+
+// <div id="show-time">
+//   <p>${showTime(show)}</p>
+// </div>
+// <div id="show-address">
+//     <p>address: ${showAddress(show)}</p>
+// </div>
+  document.getElementById("show-box").innerHTML = showHTML
 }
+
+
+// const showTime = (show)=>{
+//   let arr = ""
+//   arr = show.wr_4
+//   if(arr == ""){
+//       return show = "unknown"
+//   }else{
+//       if(arr.length > 20){
+//           return arr = `time: ${arr.substring(0,15) + "..."}`
+//       }else{
+//           return arr = `time: ${arr}` 
+//       }
+
+//   }
+// } 
+
+// const showAddress = (show) =>{
+//   let arr1 = ""
+//   arr1 = show.wr_6
+//   if(arr1.length > 20){
+//       return arr1.substring(0,15) + "..."
+//   }else{
+//       return arr1 
+//   }
+// }
+
+const popUp = () =>{
+  popUpScreen.style.display = "block"
+
+}
+
+const exit = ()=>{
+  popUpScreen.style.display = "none"
+}
+
+const popText = (event) => {
+    console.log(event)
+  
+  //각 내용을 상세히
+  // document.getElementById("pop-inner").innerHTML = popupHTML
+}
+console.log("그림을 클릭하면 사이트로 들어가고 이름을 클릭하면 창을 띄어서 거기에서 자세히 설명해주고 싶은데 이걸 구연할 방법을 모집중입니다")
