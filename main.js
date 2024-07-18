@@ -103,4 +103,4 @@ const popText = (event) => {
   //각 내용을 상세히
   // document.getElementById("pop-inner").innerHTML = popupHTML
 }
-console.log("그림을 클릭하면 사이트로 들어가고 이름을 클릭하면 창을 띄어서 거기에서 자세히 설명해주고 싶은데 이걸 구연할 방법을 모집중입니다")
+console.log("그림을 클릭하면 사이트로 들어가고 이름을 클릭하면 창을 띄어서 거기에서 자세히 설명해주고 싶은데 이걸 구연할 방법을 찾는중입니다")
