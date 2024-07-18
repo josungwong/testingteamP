@@ -5,8 +5,8 @@ body{
     background-color: #afafaf;
 }
 .show-img-size{
-    max-width: 500px;
-    height: 200px;
+    width: 250px;
+    height: 170px;
 }
 #show-img{
     display: flex;
