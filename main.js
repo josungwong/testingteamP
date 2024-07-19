@@ -74,8 +74,8 @@ const popText = (img1,img2,title,type,phone,time,address,homepage) => {
   let popupHTML = `<div>
           <div>
               <a id="show-img" href=${homepage}>
-              <img class="show-img-size" src=${img1} onerror="this.onerror=null; this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUnvISVTYopMAy17o3mB2lfSPeEjoKfAdV2w&s';">
-              <img class="show-img-size " src=${img2} https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUnvISVTYopMAy17o3mB2lfSPeEjoKfAdV2w&s>
+              <img class="show-img-size block" src=${img1} onerror="this.onerror=null; this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUnvISVTYopMAy17o3mB2lfSPeEjoKfAdV2w&s';">
+              <img class="show-img-size block " src=${img2} https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUnvISVTYopMAy17o3mB2lfSPeEjoKfAdV2w&s>
               </a>
           </div>
           <div class="show-exp" >
