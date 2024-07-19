@@ -1,6 +1,10 @@
 *{
     margin: 0;
 }
+.container-size{
+    margin: 0 auto;
+    width: 40vw;
+}
 .show-img-size{
     width: 250px;
     height: 170px;
