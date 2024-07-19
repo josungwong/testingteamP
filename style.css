@@ -75,5 +75,9 @@
         left: 85%;
         top: 1%;
     }
-    
+    .block{
+        width: 40vw;
+        height: 25vw;
+        margin: 0 0.5em;
+    }
 }
